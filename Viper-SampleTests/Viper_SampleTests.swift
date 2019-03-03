@@ -7,21 +7,37 @@
 //
 
 import XCTest
+import RxSwift
 @testable import Viper_Sample
 
 class Viper_SampleTests: XCTestCase {
 
+    var interactor: RxMainInteractor!
+    let disposeBag = DisposeBag()
     override func setUp() {
+        super.setUp()
+        interactor = RxMainInteractor()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDown() {
+        super.tearDown()
+        interactor = nil
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        interactor.fetchDatas()
+            .subscribe(onSuccess: { result in
+                switch result {
+                case .success(let value):
+                    XCTAssert(value.count == MainEntity.allCases.count)
+                case .failure:
+                    XCTAssert(false)
+                }
+            }) { error in
+                XCTAssert(false)
+        }.disposed(by: disposeBag)
     }
 
     func testPerformanceExample() {
