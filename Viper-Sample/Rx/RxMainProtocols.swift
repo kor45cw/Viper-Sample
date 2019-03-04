@@ -12,7 +12,7 @@ import RxSwift
 import Alamofire
 
 protocol RxMainRouterProtocol {
-    static func createModule() -> UIViewController
+    func createModule() -> UIViewController
     // PRESENTER -> Router
     func presentDetailScreen(for data: MainEntity)
 }

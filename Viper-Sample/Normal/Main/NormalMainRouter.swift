@@ -38,10 +38,10 @@ class NormalMainRouter: NormalMainRouterProtocol {
     
     
     func presentPostDetailScreen(from view: NormalMainViewProtocol, for data: MainEntity) {
-//        let postDetailViewController = PostDetailWireFrame.createPostDetailModule(forPost: post)
+        let viewController = NormalDetailRouter().createModule()
         
-//        if let sourceView = view as? UIViewController {
-//            sourceView.navigationController?.pushViewController(postDetailViewController, animated: true)
-//        }
+        if let sourceView = view as? UIViewController {
+            sourceView.navigationController?.pushViewController(postDetailViewController, animated: true)
+        }
     }
 }

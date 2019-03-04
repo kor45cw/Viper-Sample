@@ -9,19 +9,23 @@
 import UIKit
 
 class RxMainRouter: RxMainRouterProtocol {
-    static func createModule() -> UIViewController {
+    // MARK: - Private properties -
+    weak var viewController: UIViewController!
+    
+    func createModule() -> UIViewController {
         let view = mainStoryboard.instantiateViewController(withIdentifier: "RxMainView")
         if let view = view as? RxMainView {
             let interactor = RxMainInteractor()
-            let presenter = RxMainPresenter(router: RxMainRouter(), view: view, interactor: interactor)
+            let presenter = RxMainPresenter(router: self, view: view, interactor: interactor)
             view.presenter = presenter
             interactor.output = presenter
+            self.viewController = view
             return view
         }
         return UIViewController()
     }
     
-    static var mainStoryboard: UIStoryboard {
+    var mainStoryboard: UIStoryboard {
         return UIStoryboard(name: "Main", bundle: Bundle.main)
     }
     

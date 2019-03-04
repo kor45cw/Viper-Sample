@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func showRx(_ sender: UIButton) {
-        let rxVersion = RxMainRouter.createModule()
+        let rxVersion = RxMainRouter().createModule()
         self.navigationController?.pushViewController(rxVersion, animated: true)
     }
 }
