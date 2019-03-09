@@ -7,3 +7,29 @@
 //
 
 import Foundation
+
+class NormalDetailPresenter: NormalDetailPresenterProtocol {
+    var view: NormalDetailViewProtocol?
+    
+    var interactor: NormalDetailInteractorInputProtocol?
+    
+    var router: NormalDetailRouterProtocol?
+    
+    func viewDidLoad() {
+        
+    }
+    
+    func showDetails(for item: MainEntity) {
+        
+    }
+}
+
+extension NormalDetailPresenter: NormalDetailInteractorOutputProtocol {
+    func loadOnError() {
+        
+    }
+    
+    func loadFinished() {
+        
+    }
+}

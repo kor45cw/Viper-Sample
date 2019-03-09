@@ -9,6 +9,14 @@
 import UIKit
 
 class NormalDetailView: UIViewController {
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.tableFooterView = UIView()
+        }
+    }
+    
 
     var presenter: NormalDetailPresenterProtocol?
     
@@ -18,5 +26,20 @@ class NormalDetailView: UIViewController {
 }
 
 extension NormalDetailView: NormalDetailViewProtocol {
+    
+}
+
+extension NormalDetailView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath)
+        return cell
+    }
+}
+
+extension NormalDetailView: UITableViewDelegate {
     
 }

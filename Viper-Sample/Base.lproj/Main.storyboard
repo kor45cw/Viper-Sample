@@ -180,9 +180,43 @@
                     <view key="view" contentMode="scaleToFill" id="lk9-MD-vfe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ggv-CI-giy">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" textLabel="Qh1-ei-NF4" style="IBUITableViewCellStyleDefault" id="zh8-Mp-TYc">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zh8-Mp-TYc" id="RTg-4N-pER">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qh1-ei-NF4">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ggv-CI-giy" firstAttribute="leading" secondItem="lk9-MD-vfe" secondAttribute="leading" id="7fd-D8-J98"/>
+                            <constraint firstItem="UC7-Y9-7ad" firstAttribute="trailing" secondItem="ggv-CI-giy" secondAttribute="trailing" id="LsZ-BZ-VmW"/>
+                            <constraint firstItem="ggv-CI-giy" firstAttribute="top" secondItem="lk9-MD-vfe" secondAttribute="top" id="VgG-Qg-kcV"/>
+                            <constraint firstItem="UC7-Y9-7ad" firstAttribute="bottom" secondItem="ggv-CI-giy" secondAttribute="bottom" id="cpo-rb-8rQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="UC7-Y9-7ad"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="ggv-CI-giy" id="hib-Wv-ff4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wtz-cc-cAT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
