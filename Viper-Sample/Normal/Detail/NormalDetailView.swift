@@ -16,26 +16,34 @@ class NormalDetailView: UIViewController {
             tableView.tableFooterView = UIView()
         }
     }
-    
 
     var presenter: NormalDetailPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.viewDidLoad()
     }
 }
 
 extension NormalDetailView: NormalDetailViewProtocol {
+    func showError() {
+        let controller = UIAlertController(title: "ERROR", message: "ERROR", preferredStyle: .alert)
+        self.present(controller, animated: true, completion: nil)
+    }
     
+    func updateData() {
+        self.tableView.reloadData()
+    }
 }
 
 extension NormalDetailView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return presenter?.itemCount ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath)
+        cell.textLabel?.text = presenter?[indexPath.item]?.title
         return cell
     }
 }

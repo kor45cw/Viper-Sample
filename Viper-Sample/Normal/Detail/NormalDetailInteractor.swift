@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-struct Posts: Decodable {
+struct Post: Decodable {
     var userId: Int
     var id: Int
     var title: String
@@ -21,12 +21,13 @@ class NormalDetailInteractor: NormalDetailInteractorInputProtocol {
     
     func fetchDatas() {
         let url = URL(string: "http://jsonplaceholder.typicode.com/posts")!
-        AF.request(url, method: .get).validate().responseDecodable { (response: DataResponse<[Posts]>) in
+        AF.request(url, method: .get).validate().responseDecodable { [weak self] (response: DataResponse<[Post]>) in
             switch response.result {
             case .success(let value):
-                print(value.count)
+                self?.presenter?.loadFinished(value)
             case .failure(let error):
                 print(error.localizedDescription)
+                self?.presenter?.loadOnError()
             }
         }
     }

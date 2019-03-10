@@ -16,11 +16,13 @@ protocol NormalDetailPresenterProtocol: class {
     // VIEW -> PRESENTER
     func viewDidLoad()
     func showDetails(for item: MainEntity)
+    var itemCount: Int { get }
+    subscript(index: Int) -> Post? { get }
 }
 
 protocol NormalDetailInteractorOutputProtocol: class {
     // INTERACTOR -> PRESENTER
-    func loadFinished()
+    func loadFinished(_ result: [Post])
     func loadOnError()
 }
 
@@ -34,6 +36,8 @@ protocol NormalDetailViewProtocol {
     var presenter: NormalDetailPresenterProtocol? { get set }
     
     // PRESENTER -> VIEW
+    func updateData()
+    func showError()
 }
 
 protocol NormalDetailRouterProtocol {

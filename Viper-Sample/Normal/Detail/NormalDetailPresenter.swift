@@ -10,26 +10,35 @@ import Foundation
 
 class NormalDetailPresenter: NormalDetailPresenterProtocol {
     var view: NormalDetailViewProtocol?
-    
     var interactor: NormalDetailInteractorInputProtocol?
-    
     var router: NormalDetailRouterProtocol?
+    var items: [Post]?
     
     func viewDidLoad() {
-        
+        interactor?.fetchDatas()
     }
     
     func showDetails(for item: MainEntity) {
         
     }
+    
+    var itemCount: Int {
+        return items?.count ?? 0
+    }
+    
+    subscript(index: Int) -> Post? {
+        guard let items = items, !items.isEmpty && (items.count > index) else { return nil }
+        return items[index]
+    }
 }
 
 extension NormalDetailPresenter: NormalDetailInteractorOutputProtocol {
     func loadOnError() {
-        
+        view?.showError()
     }
     
-    func loadFinished() {
-        
+    func loadFinished(_ result: [Post]) {
+        self.items = result
+        view?.updateData()
     }
 }

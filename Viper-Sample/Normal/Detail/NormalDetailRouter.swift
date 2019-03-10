@@ -19,17 +19,17 @@ class NormalDetailRouter: NormalDetailRouterProtocol {
     static func createModule() -> UIViewController {
         let view = mainStoryboard.instantiateViewController(withIdentifier: "NormalDetailView")
         if let view = view as? NormalDetailView {
-//            let presenter: NormalMainPresenterProtocol & NormalMainInteractorOutputProtocol = NormalMainPresenter()
-//            let interactor: NormalMainInteractorInputProtocol = NormalMainInteractor()
+            let presenter: NormalDetailPresenterProtocol & NormalDetailInteractorOutputProtocol = NormalDetailPresenter()
+            let interactor: NormalDetailInteractorInputProtocol = NormalDetailInteractor()
             //            let localDataManager: PostListLocalDataManagerInputProtocol = PostListLocalDataManager()
             //            let remoteDataManager: PostListRemoteDataManagerInputProtocol = PostListRemoteDataManager()
-//            let router: NormalMainRouterProtocol = NormalMainRouter()
+            let router: NormalDetailRouterProtocol = NormalDetailRouter()
             
-//            view.presenter = presenter
-//            presenter.view = view
-//            presenter.router = router
-//            presenter.interactor = interactor
-//            interactor.presenter = presenter
+            view.presenter = presenter
+            presenter.view = view
+            presenter.router = router
+            presenter.interactor = interactor
+            interactor.presenter = presenter
             //            interactor.localDatamanager = localDataManager
             //            interactor.remoteDatamanager = remoteDataManager
             //            remoteDataManager.remoteRequestHandler = interactor
