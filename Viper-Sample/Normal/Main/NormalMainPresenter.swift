@@ -27,7 +27,7 @@ extension NormalMainPresenter: NormalMainInteractorOutputProtocol {
         // Error
     }
     
-    func loadFinished() {
-        view?.showDatas(with: MainEntity.allCases)
+    func loadFinished(with datas: [MainEntity]) {
+        view?.showDatas(with: datas)
     }
 }

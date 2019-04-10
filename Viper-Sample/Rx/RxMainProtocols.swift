@@ -34,7 +34,7 @@ protocol RxMainViewProtocol: class {
 
 protocol RxMainInteractorInputProtocol {
     // PRESENTER -> INTERACTOR
-    func fetchDatas() -> Single<Result<[MainEntity]>>
+    func fetchDatas() -> Single<Result<[MainEntity], OtherError>>
 }
 
 protocol RxMainInteractorOutputProtocol: class {

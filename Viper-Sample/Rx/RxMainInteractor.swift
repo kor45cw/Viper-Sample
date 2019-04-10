@@ -19,7 +19,8 @@ enum OtherError: Error {
 class RxMainInteractor: RxMainInteractorInputProtocol {
     weak var output: RxMainInteractorOutputProtocol?
     
-    func fetchDatas() -> Single<Result<[MainEntity]>> {
+    
+    func fetchDatas() -> Single<Result<[MainEntity], OtherError>> {
         return Single.create(subscribe: { [weak self] observer in
             guard self != nil else {
                 observer(.error(OtherError.unknownError))

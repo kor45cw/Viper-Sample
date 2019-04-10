@@ -20,7 +20,7 @@ protocol NormalMainPresenterProtocol: class {
 
 protocol NormalMainInteractorOutputProtocol: class {
     // INTERACTOR -> PRESENTER
-    func loadFinished()
+    func loadFinished(with datas: [MainEntity])
     func loadOnError()
 }
 

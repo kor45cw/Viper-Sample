@@ -13,6 +13,6 @@ class NormalMainInteractor: NormalMainInteractorInputProtocol {
     
     func fetchDatas() {
         // Load Data
-        presenter?.loadFinished()
+        presenter?.loadFinished(with: MainEntity.allCases)
     }
 }
